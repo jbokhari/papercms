@@ -12,7 +12,7 @@ class blogPostController {
 	public function getFileNameFromPostID($postId, $ext = "xml"){
 		global $paper;
 		print_x($paper);
-		// return $paper->prefix . $paper->postsName . $postId . "." . $ext;
+		return $paper->prefix . $paper->postsName . $postId . "." . $ext;
 
 	}
 

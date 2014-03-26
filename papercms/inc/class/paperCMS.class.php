@@ -25,6 +25,7 @@ class paperCMS {
 	 * Init is triggered on construction after successfully loading settings
 	 **/
 	public function init(){
+		print_x($this);
 		$this->blogPostController = new blogPostController($this->current);
 		// $this->loadPage();
 	}
