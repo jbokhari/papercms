@@ -1,7 +1,7 @@
 <?php
 
 class paperCMS {
-	private $settings;
+	public $settings;
 	public $prefix = "paperCMS_";
 	public $postsName = "post_";
 	public $blogPostController;
@@ -25,8 +25,8 @@ class paperCMS {
 	 * Init is triggered on construction after successfully loading settings
 	 **/
 	public function init(){
-		print_x($this);
-		$this->blogPostController = new blogPostController($this->current);
+		// print_x($this);
+		$this->blogPostController = new blogPostController($this);
 		// $this->loadPage();
 	}
 

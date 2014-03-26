@@ -1,5 +1,4 @@
 <?php
-
 class blogPost{
 	public function __construct($file){
 		$data = simplexml_load_file($file);

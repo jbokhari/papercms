@@ -3,24 +3,20 @@ class blogPostController {
 
 	public $postId;
 
-	public function __construct($postId = null){
-		$this->postId = $postId; 
-		$this->file = $this->getFileNameFromPostID($postId);
+	public function __construct(paperCMS &$paper){
+		$this->postId = $paper->current; 
+		$this->file = $this->getFileNameFromPostID($this->postId, $paper);
 		$this->fullFilePath = $this->getFullFilePath($this->file);
 	}
 
-	public function getFileNameFromPostID($postId, $ext = "xml"){
-		global $paper;
-		print_x($paper);
+	public function getFileNameFromPostID($postId, paperCMS $paper, $ext = "xml"){
 		return $paper->prefix . $paper->postsName . $postId . "." . $ext;
 
 	}
 
 	public function getFullFilePath($file){
-
-		$file = $this->getFileNameFromPostID($postId);
 		$postDir = CMS_HOME . "/papercms/data/posts/";
-		$full = $postDir . $file;
+		$full = $postDir . $this->file;
 		echo $full;
 
 	}
@@ -43,7 +39,7 @@ class blogPostController {
 	/** Read **/
 	public function displayPost(){
 		if ($this->postExists()){
-			require_once(CMS_HOME . "\papercms/inc/functions.php");
+			require_once(CMS_HOME . "/papercms/inc/functions.php");
 			$post = new blogPost($this->fullFilePath);
 			
 		} else {
