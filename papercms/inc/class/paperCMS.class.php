@@ -7,6 +7,7 @@ class paperCMS {
 	public $blogPostController;
 
 	public function __construct($postId = 1){
+
 		$this->current = $postId;
 		if (extension_loaded("SimpleXML")){
 
