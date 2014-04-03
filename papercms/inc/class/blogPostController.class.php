@@ -6,15 +6,18 @@ class blogPostController {
 	public $template = "single.php";
 	public $theme = "default";
 	public $stylesheets = array();
+	private $paper;
 
 	public function __construct(paperCMS &$paper){
 		$this->log("constructed");
+		$this->paper = $paper;
 		$this->postId = $paper->current; 
 		$this->file = $this->getFileFromID($this->postId, $paper);
 		$this->getFullFilePath($this->file);
 		$this->log("File Path Set");
 		$this->setPost();
 		$this->setStylesheets();
+		// print_x($this);
 	}
 
 	public function getFileFromID($postId, paperCMS $paper, $ext = "xml"){
@@ -25,15 +28,17 @@ class blogPostController {
 	}
 	public function setStylesheets($stylesheet= null){
 		if (empty($this->stylesheet) && $stylesheet === null){
-			$link = CMS_HOME . "/papercms/skin/";
+			$link = $this->paper->home() . "papercms/skin/";
 			$link .= $this->theme;
-			$link .= "library/css/style.css";
+			$link .= "/library/css/style.css";
 			$default = array(
 					"link" => $link
 				);
+			$this->log("Set stylesheet default");
 		}	
-		$default = $stylesheet;
-		$this->stylesheet = $stylesheet;
+		$stylesheet = $default;
+		$this->stylesheets[] = $stylesheet;
+		$this->log($this->stylesheets);
 
 	}
 	public function getFullFilePath($file = null){
@@ -68,11 +73,6 @@ class blogPostController {
 
 			
 	}
-
-	public function getHeader($append = ""){
-		$filename = "header";
-		$this->getSpecificFile($filename, $append);
-	}
 	
 	public function getSpecificFile($fileroot, $append = ""){
 		$filename = $fileroot;
@@ -83,14 +83,19 @@ class blogPostController {
 		// print_x($this->post[0]);
 		$this->getPage($file, $this->post[0]);
 	}
-	public function getFooter($append = ""){
-		$filename = "footer";
-		$this->getSpecificFile($filename, $append);
-	}
+		public function getHeader($append = ""){
+			$filename = "header";
+			$this->getSpecificFile($filename, $append);
+		}
+		public function getFooter($append = ""){
+			$filename = "footer";
+			$this->getSpecificFile($filename, $append);
+		}
 	
 	/** Read **/
 	public function getPage($file, $post = null, array $vars = array()){
 		$page = $this;
+		$paper = $this->paper;
 		if ($post === null)
 			$post = $this->post[0];
 		// print_x($post);

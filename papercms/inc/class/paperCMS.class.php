@@ -45,5 +45,24 @@ class paperCMS {
 	public function createPage($page){
 		$page->display();
 	}
+	public function trailingSlash($url){
+		$len = strlen($url);
+		$len--;
+		$pos = strrpos($url, "/"); //reverse pos
+		if ($pos === false || $len !== $pos){
+			return $url . "/";
+		}
+		else return $url;
+
+	}
+	public function home($page = ""){
+		// print_r($this);
+		$url = $this->settings->website->homeurl;
+		$url = $this->trailingSlash($url);
+		if ($page !== ""){
+			$url = $url . $page;
+		}
+		return $url;
+	}
 
 }

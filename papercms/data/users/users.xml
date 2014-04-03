@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+	<user>
+		<id>0</id>
+		<login>admin</login>
+		<password>c81cfb4e6a3d33c2f4ebf28b69070871</password>
+		<status>1</status>
+	</user>
+	<user>
+		<id>1</id>
+		<login>mark</login>
+		<password>facebook</password>
+		<status>0</status>
+	</user>
+</users>

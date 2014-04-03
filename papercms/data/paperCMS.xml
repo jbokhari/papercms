@@ -9,5 +9,10 @@
 			http://www.codeatlarge.com/
 		</url>
 	</author>
+	<website>
+		<homeurl>http://localhost/papercms/</homeurl>
+	</website>
+	<passwordSalt>{?X5.70ux$Ng,?RYx|S$OE/UOIkw+cU^]6T:?IVeyi`HA-}?34</passwordSalt>
+	<cookieSalt>M5VZGjKl^Hv87hJtQy@cNv-M%>S3Qlua7]fwynj~$+~G}Legd-</cookieSalt>
 
 </paperCMS>

@@ -1,0 +1,25 @@
+body{
+	font-family: 'Source Sans Pro', "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	font-size: 24px;
+}
+.wrap{
+	width: 90%;
+	max-width: 1080px;
+}
+h1.post-title{
+	margin: 1.618em 0;
+
+}
+h1{
+	color: #444;
+	font-size: 3em;
+	
+}
+.post{
+	max-width: 700px;
+	margin: 0 auto;
+}
+p{
+	margin: 1em 0;
+	line-height: 1.618;
+}
